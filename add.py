@@ -7,6 +7,10 @@ import requests
 import urllib3
 
 
+# USAGE: add.py aa:bb:cc:dd:ee:ff 00:11:22:33:44:55 repeat MAC as you wish
+# as a disclaimer that the mac limit of argv is unknown as not tested yet
+
+
 # disabling SSL error
 urllib3.disable_warnings()
 
