@@ -1,4 +1,4 @@
-#!/bin/
+#!usr/bin/env python3
 
 import requests
 import urllib3
@@ -11,11 +11,11 @@ import json
 urllib3.disable_warnings()
 
 # URI to call API to
-url = 'https://szlnm189dha:9060/ers/config/endpoint/name/'
-url2 = 'https://szlnm189dha:9060/ers/config/endpoint/'
+url = 'https://PAN:9060/ers/config/endpoint/name/'
+url2 = 'https://PAN:9060/ers/config/endpoint/'
 hdr = {
         'Accept': 'application/json',
-        'Authorization': 'Basic ZXJzYWRtaW46RW1ndXl0aDVhZw==',
+        'Authorization': 'Basic ****',
         'Content-Type': 'application/json'
         }
 
