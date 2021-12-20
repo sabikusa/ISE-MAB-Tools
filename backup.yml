@@ -1,4 +1,6 @@
 ---
+# Ansible playbook for backing up the network gears
+
 
 - name: Creating a directory if not exits
   hosts: localhost
@@ -7,7 +9,7 @@
   tasks:
     - name: Backup pool
       file:
-        path: /home/network_automation/backup/{{ '%Y' | strftime }}/{{ '%b' | strftime }}/{{ '%d' | strftime }}
+        path: /directory/you/wanna/save_at/{ '%Y' | strftime }}/{{ '%b' | strftime }}/{{ '%d' | strftime }}
         state: directory
         mode: '2776'
 
