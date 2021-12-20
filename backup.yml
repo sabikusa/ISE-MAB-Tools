@@ -1,0 +1,46 @@
+---
+
+- name: Creating a directory if not exits
+  hosts: localhost
+  gather_facts: false
+  
+  tasks:
+    - name: Backup pool
+      file:
+        path: /home/network_automation/backup/{{ '%Y' | strftime }}/{{ '%b' | strftime }}/{{ '%d' | strftime }}
+        state: directory
+        mode: '2776'
+
+- name: BACKUP JOB
+  hosts: your_hosts
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Writing memory if modified (asa)
+      asa_config:
+        save_when: modified
+      when: ansible_network_os == 'asa'
+      register: asawr
+
+    - name: Writing memory if modified (ios)
+      ios_config:
+        save_when: modified
+      when: ansible_network_os == 'ios'
+      register: ioswr
+
+    - name: Writing memory if modified (nxos)
+      nxos_config:
+        save_when: modified
+      when: ansible_network_os == 'nxos'
+      register: nxoswr
+
+    - name: Pulling the running-config
+      cli_command:
+        command: show run
+      register: output
+
+    - name: Storing the backup
+      copy:
+        content: "{{ output.stdout }}"
+        dest: "/directory/you/wanna/save_at/{{ '%Y' | strftime }}/{{ '%b' | strftime }}/{{ '%d' | strftime }}/{{ ansible_date_time.date }}_{{ inventory_hostname }}.txt"
