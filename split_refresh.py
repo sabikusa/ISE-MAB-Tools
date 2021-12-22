@@ -103,7 +103,7 @@ res = json.loads(http_res.read())
 o365_ips = set()
 o365_fqdns = set()
 for service in res:
-    if service["category"] == "Optimize":
+    if (service["category"] == "Optimize" and service["serviceArea"] == "SharePoint") or (service["category"] == "Optimize" and service["serviceArea"] == "Skype"):
         for ip in service.get("ips", []):
             o365_ips.add(ip)
         for fqdn in service.get("urls", []):
