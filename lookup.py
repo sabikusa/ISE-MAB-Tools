@@ -22,7 +22,7 @@ hdr = {
         'Content-Type': 'application/json'
         }
 
-url2 = 'https://szlnm189dha:9060/ers/config/identitygroup/'
+url2 = 'https://PAN:9060/ers/config/identitygroup/'
 
 
 def check(MAC):
