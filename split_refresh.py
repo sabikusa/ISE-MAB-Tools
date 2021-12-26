@@ -192,7 +192,7 @@ with open('esacl.txt', 'w') as outfile:
 
 
 
-print("\n##### Step 3: Push the latest ACL shown above for the split exclude in the group-policy on ASAs\n")
+print("\n##### Step 3: Push the latest ACL shown above plus Kaltura/Adaptiva for the split exclude in the group-policy on ASAs\n")
 
 
 user_name = input("Enter your username to SSH: ")
