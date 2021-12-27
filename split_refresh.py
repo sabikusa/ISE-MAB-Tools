@@ -128,17 +128,16 @@ print_acl_lines(
     ips=["13.107.60.1/32"],
     section_comment="v4 address for Microsoft Teams"
     )
+
 # Cisco Webex - Per https://help.webex.com/en-us/WBX000028782/Network-Requirements-for-Webex-Teams-Services
 webex_url = 'https://help.webex.com/en-us/WBX000028782/Network-Requirements-for-Webex-Teams-Services'
 webex = requests.get(webex_url, verify=False)
-webex_body = webex.text
-wip1 = re.findall('\d+[.]\d+[.]\d+[.]\d+[/]\d+', webex_body)
-webex_ips = list(set(wip1))
+webex_ips = list(set(re.findall('\d+[.]\d+[.]\d+[.]\d+[/]\d+', webex.text)))
 
 print_acl_lines(
     acl_name=acl_name,
     ips=webex_ips,
-    section_comment="IPv4 and IPv6 destinations for Cisco Webex",
+    section_comment="IPv4 destinations for Cisco Webex",
 )
 
 zourl = 'https://assets.zoom.us/docs/ipranges/ZoomMeetings.txt'
