@@ -1,6 +1,6 @@
 #!usr/bin/env python3
 
-mport requests
+import requests
 import urllib3
 import xml.dom.minidom
 import argparse
