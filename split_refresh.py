@@ -130,7 +130,7 @@ print_acl_lines(
     )
 
 # Cisco Webex - Per https://help.webex.com/en-us/WBX000028782/Network-Requirements-for-Webex-Teams-Services
-webex_url = 'https://help.webex.com/en-us/WBX000028782/Network-Requirements-for-Webex-Teams-Services'
+webex_url = 'https://help.webex.com/en-US/article/WBX264/How-Do-I-Allow-Webex-Meetings-Traffic-on-My-Network?'
 webex = requests.get(webex_url, verify=False)
 webex_ips = list(set(re.findall('\d+[.]\d+[.]\d+[.]\d+[/]\d+', webex.text)))
 
